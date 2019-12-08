@@ -1,0 +1,42 @@
+﻿@model IEnumerable<_1250865___MVC_Project.Image>
+
+@{
+    ViewBag.Title = "Index1";
+}
+
+<h2>Available Products</h2>
+
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductImage)
+            </th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+
+                <td>@item.ProductId</td>
+                <td>
+                    @{
+                        var base64 = Convert.ToBase64String(item.ProductImage);
+                        var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+                    }
+                    <img src="@imgsrc" style="max-width:100px;max-height:100px" />
+                </td>
+
+
+            </tr>
+        }
+    </tbody>
+</table>
+

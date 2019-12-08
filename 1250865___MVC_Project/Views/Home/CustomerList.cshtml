@@ -1,0 +1,45 @@
+﻿@model IEnumerable<_1250865___MVC_Project.Customer>
+
+@{
+    ViewBag.Title = "CustomerList";
+}
+
+<h2>CustomerList</h2>
+
+<p>
+    <a class="btn btn-success" href="@Url.Action("exportReport")">Download Report</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.CustomerId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.CustomerId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.CustomerId })
+        </td>
+    </tr>
+}
+
+</table>
